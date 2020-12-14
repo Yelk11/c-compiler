@@ -17,10 +17,14 @@ AST_T* init_ast(int type)
     /* AST_FUNTION_CALL */
     ast->function_call_name = (void*)0;
     ast->function_call_arguments = (void*)0;
-    ast->function_cal_arguments_size = 0;
+    ast->function_call_arguments_size = 0;
 
     /* AST_STRING */
     ast->string_value = (void*)0;
+
+    /* AST_COMPOUND */
+    ast->compound_value = (void*)0;
+    ast->compound_size = 0;
 
     return ast;
 }

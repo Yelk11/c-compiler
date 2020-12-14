@@ -57,7 +57,7 @@ token_T* lexer_get_next_token(lexer_T* lexer)
         }
     }
 
-    return (void*)0;//init_token(TOKEN_EOF, "\0");
+    return init_token(TOKEN_EOF, "\0");
 }
 
 token_T* lexer_collect_string(lexer_T* lexer)

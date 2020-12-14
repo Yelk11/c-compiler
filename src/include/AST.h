@@ -8,8 +8,10 @@ typedef struct AST_STRUCT
     enum {
         AST_VARIABLE_DEFINITION,
         AST_VARIABLE,
-        AST_FUNCTION_CAL,
-        AST_STRING
+        AST_FUNCTION_CALL,
+        AST_STRING,
+        AST_COMPOUND,
+        AST_NOOP
     } type;
 
     /* AST_VARIABLE_DEFINITION */
@@ -22,11 +24,15 @@ typedef struct AST_STRUCT
     /* AST_FUNTION_CALL */
     char* function_call_name;
     struct AST_STRUCT** function_call_arguments;
-    size_t function_cal_arguments_size;
+    size_t function_call_arguments_size;
 
     /* AST_STRING */
     char* string_value;
+
+    /* AST_COMPOUND */
+    struct AST_STRUCT** compound_value;
+    size_t compound_size;
 } AST_T;
 
-
+AST_T* init_ast(int type);
 #endif
