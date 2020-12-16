@@ -48,7 +48,6 @@ AST_T *parser_parse_statement(parser_T *parser)
 
 AST_T *parser_parse_statements(parser_T *parser)
 {
-
     AST_T *compound = init_ast(AST_COMPOUND);
     compound->compound_value = calloc(1, sizeof(struct AST_STRUCT *));
 
