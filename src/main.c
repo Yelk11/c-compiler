@@ -1,27 +1,34 @@
 #include <stdio.h>
-#include <string.h>
+#include <stddef.h>
+
+#include "include/main.h"
 #include "include/lexer.h"
-#include "include/parser.h"
-#include "include/visitor.h"
-//#include "include/io.h"
+#include "include/token.h"
 
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char *argv[]){
     
+    token_T* HEAD;
+    token_T* child1;
+    token_T* child2;
     
-    lexer_T* lexer = init_lexer(
-        "var name = \"john doe\";"
+    child1->value = "p";
 
-        "print(name);"
-    );
+    HEAD->child=child1;
+    child1->child=child2;
 
-    parser_T* parser = init_parser(lexer);
-    AST_T* root = parser_parse(parser);
-    visitor_T* visitor = init_visitor();
-    visitor_visit(visitor, root);
+    print_list(HEAD);
+}
 
-    
-    
-    return 0;
+
+void add_child(token_T* token){
+
+}
+
+void print_list(token_T* head){
+    if (head->child == NULL){
+        return;
+    }
+    printf("Value is %d\n", head->value);
+    print_list(head->child);
 }

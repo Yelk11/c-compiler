@@ -1,10 +1,22 @@
 #ifndef TOKEN_H
 #define TOKEN_H
-typedef struct TOKEN_STRUCT
+
+
+// typedef struct Node Node;
+// struct Node {
+//     int value;
+//     Node* next;
+// };
+
+
+typedef Token Token;
+struct Token
 {
+    
     enum
     {
         TOKEN_ID,
+        TOKEN_CONSTANT,
         TOKEN_EQUALS,
         TOKEN_STRING,
         TOKEN_SEMI,
@@ -17,7 +29,13 @@ typedef struct TOKEN_STRUCT
     } type;
 
     char* value;
-} token_T;
+    struct Token* child;
+}token_T;
 
-token_T* init_token(int type, char* value);
+Token* add_token(Token* token);
+
+Token* pop_token(Token* token);
+
+void print_tokens(Token* token);
+
 #endif
